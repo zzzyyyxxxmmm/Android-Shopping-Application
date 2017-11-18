@@ -54,6 +54,7 @@ public class FragmentHome extends Fragment implements LocationListener {
         x.view().inject(this, view);
         topcity.setText(ShareUtils.getCityName(getActivity()));
         return view;
+
     }
 
     @Override
