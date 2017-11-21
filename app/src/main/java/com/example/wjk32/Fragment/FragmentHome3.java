@@ -7,7 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.wjk32.myapplication.R;
+import com.example.wjk32.R;
 
 /**
  * Created by wjk32 on 11/17/2017.

@@ -1,6 +1,9 @@
-package com.example.wjk32.myapplication;
+package com.example.wjk32;
 
 import com.example.wjk32.Fragment.*;
+import com.example.wjk32.R;
+import com.example.wjk32.consts.Consts;
+
 import android.app.Application;
 import android.support.v4.app.FragmentTransaction;
 import android.provider.MediaStore;
@@ -10,6 +13,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.ViewUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -17,12 +21,17 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 
+import java.io.IOException;
 
 
 public class MainActivity extends FragmentActivity implements OnCheckedChangeListener {
@@ -31,7 +40,8 @@ public class MainActivity extends FragmentActivity implements OnCheckedChangeLis
     @ViewInject(R.id.main_home)
     private RadioButton main_home;
     private FragmentManager fragmentManager;
-
+    @ViewInject(R.id.button)
+    private Button button;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,7 +60,19 @@ public class MainActivity extends FragmentActivity implements OnCheckedChangeLis
 
 
     }
+    @Event(value=R.id.button,type = View.OnClickListener.class)
+    private void Onclick(View view){
+        HttpClient client=new DefaultHttpClient();
+        HttpGet httpGet=new HttpGet(Consts.CITY_DATA_URI);
 
+        try {
+            Log.i("TAG","before");
+            HttpResponse response=client.execute(httpGet);
+            Log.i("TAG","gua");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     @Override
     public void onCheckedChanged(RadioGroup radioGroup, int i) {
         switch (i){

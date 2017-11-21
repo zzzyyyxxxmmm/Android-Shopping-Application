@@ -1,8 +1,11 @@
 package com.example.wjk32.Fragment;
 
+import com.example.wjk32.CityActivity;
+import com.example.wjk32.myutils.MyUtils;
 import com.example.wjk32.utils.*;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -27,11 +30,13 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.wjk32.myapplication.R;
+import com.example.wjk32.R;
 import com.example.wjk32.utils.ShareUtils;
 
+import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
+import org.xutils.ViewInjector;
 
 import java.io.IOException;
 import java.util.List;
@@ -43,6 +48,7 @@ import java.util.List;
 public class FragmentHome extends Fragment implements LocationListener {
     @ViewInject(R.id.index_top_city)
     private TextView topcity;
+
     private String CityName;
     private LocationManager locationManager;
 
@@ -51,10 +57,36 @@ public class FragmentHome extends Fragment implements LocationListener {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.homeindex, null);
-        x.view().inject(this, view);
+        x.view().inject(this,view);
         topcity.setText(ShareUtils.getCityName(getActivity()));
+        topcity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivityForResult(new Intent(getActivity(),CityActivity.class), MyUtils.REQUEST_CODE);
+            }
+        });
         return view;
+    }
 
+//    @Event(value=R.id.index_top_city,type = View.OnClickListener.class)
+//    private void onclick(View v){
+//        Log.i("TAG","works!");
+//        switch(v.getId()){
+//            case R.id.index_top_city:
+//                startActivityForResult(new Intent(getActivity(),CityActivity.class), MyUtils.REQUEST_CODE);
+//                break;
+//            default:
+//                break;
+//        }
+//    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==MyUtils.REQUEST_CITY_CODE && resultCode== Activity.RESULT_OK){
+            CityName=data.getStringExtra("cityname");
+            topcity.setText(CityName);
+        }
     }
 
     @Override
