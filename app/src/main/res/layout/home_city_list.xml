@@ -1,0 +1,46 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <RelativeLayout
+        android:id="@+id/index"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/normal_orange_color"
+        android:paddingLeft="0dp" >
+
+        <Button
+            android:id="@+id/index_city_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:drawableLeft="@mipmap/previous"
+            android:text="choose city"
+            android:background="#19e64dff"
+
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/index_city_flushcity"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@mipmap/map_refresh" />
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/city_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/index" />
+    <!--<com.uniquefrog.dianping.view.CitySideIndexView-->
+        <!--android:id="@+id/citySideIndexView"-->
+        <!--android:layout_width="45dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentRight="true"-->
+        <!--android:layout_below="@id/rlCityBar"-->
+        <!--/>-->
+
+</RelativeLayout>
