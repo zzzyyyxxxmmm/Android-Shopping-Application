@@ -219,17 +219,14 @@ public class CityActivity extends Activity implements SiderBar.OnTouchingLetterC
         }
 
     @Override
+
     public void onTouchingLetterChanged(String s) {
-        //找到listView中显示的索引位置
         listDatas.setSelection(findIndex(cityList, s));
     }
-
-    //根据s找到对应的s的位置
     public int findIndex(List<City> list, String s) {
         if (list != null) {
             for (int i = 0; i < list.size(); i++) {
                 City city = list.get(i);
-                //根据city中的sortKey进行比较
                 if (s.equals(city.getSortKey())) {
                     return i;
                 }
