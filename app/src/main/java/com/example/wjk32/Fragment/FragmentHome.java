@@ -119,16 +119,15 @@ public class FragmentHome extends Fragment implements LocationListener {
             return;
         }
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 2000, 10, this);
-        Log.i("TAG","endstartLocation");
     }
+
+
     private Handler handler= new Handler(new Handler.Callback() {
         @Override
         public boolean handleMessage(Message message) {
             if(message.what==1){
                 topcity.setText(CityName);
             }
-
-
             return false;
         }
     });
@@ -162,6 +161,7 @@ public class FragmentHome extends Fragment implements LocationListener {
         handler.sendEmptyMessage(1);
 
     }
+
     @Override
     public void onLocationChanged(Location location) {
         updateWithNewLocation(location);
@@ -187,10 +187,10 @@ public class FragmentHome extends Fragment implements LocationListener {
         super.onDestroy();
         //save current city in order to the next use
         ShareUtils.putCityName(getActivity(),CityName);
-
         stopLocation();
 
     }
+
     private void stopLocation(){
         locationManager.removeUpdates(this);
     }

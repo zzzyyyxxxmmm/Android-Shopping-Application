@@ -21,6 +21,7 @@ import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
 import com.example.wjk32.R;
+import com.example.wjk32.view.SiderBar;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.example.wjk32.consts.Consts;
@@ -48,7 +49,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class CityActivity extends Activity {
+public class CityActivity extends Activity implements SiderBar.OnTouchingLetterChangedListener {
+
 
     @ViewInject(R.id.city_list)
     private ListView listDatas;
@@ -56,6 +58,8 @@ public class CityActivity extends Activity {
     private Button index_back;
     @ViewInject(R.id.index_city_flushcity)
     private Button index_flush;
+    @ViewInject(R.id.city_sider_bar)
+    private SiderBar siderBar;
 
     private List<City> cityList;
 
@@ -67,6 +71,7 @@ public class CityActivity extends Activity {
         View view=LayoutInflater.from(this).inflate(R.layout.home_city_search, null);
         listDatas.addHeaderView(view);
         new GetCityDataTask().execute();
+        siderBar.setOnTouchingLetterChangedListener(this);
     }
 
     @Event({R.id.index_city_back,R.id.index_city_flushcity})
@@ -100,7 +105,6 @@ public class CityActivity extends Activity {
 
             HttpClient client = new DefaultHttpClient();
             HttpGet httpGet = new HttpGet(Consts.CITY_DATA_URI);
-            Log.i("TAG", Consts.CITY_DATA_URI);
             try {
                 HttpResponse response = client.execute(httpGet);
                 if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
@@ -108,7 +112,7 @@ public class CityActivity extends Activity {
                     return ParseJsonResult(jsonResult);
 
                 } else {
-                    Log.i("uniquefrog", "response code：" + response.getStatusLine().getStatusCode());
+                    Log.i("wjk32", "response code：" + response.getStatusLine().getStatusCode());
                 }
             } catch (ClientProtocolException e) {
                 // TODO Auto-generated catch block
@@ -213,4 +217,26 @@ public class CityActivity extends Activity {
 
             }
         }
+
+    @Override
+    public void onTouchingLetterChanged(String s) {
+        //找到listView中显示的索引位置
+        listDatas.setSelection(findIndex(cityList, s));
+    }
+
+    //根据s找到对应的s的位置
+    public int findIndex(List<City> list, String s) {
+        if (list != null) {
+            for (int i = 0; i < list.size(); i++) {
+                City city = list.get(i);
+                //根据city中的sortKey进行比较
+                if (s.equals(city.getSortKey())) {
+                    return i;
+                }
+            }
+        } else {
+            Toast.makeText(this, "no info", Toast.LENGTH_SHORT).show();
+        }
+        return -1;
+    }
 }

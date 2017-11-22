@@ -22,7 +22,7 @@ public class ShareUtils {
         editor.putBoolean(MODE_NAME, isFirst);
         editor.commit();
     }
-    //写入一个String类型数据
+    //getSharedPreferences is used to save some common infos of users
     public static void putCityName(Context context, String cityName){
         Editor editor = context.getSharedPreferences(FILE_NAME,
                 Context.MODE_WORLD_READABLE).edit();
@@ -31,6 +31,6 @@ public class ShareUtils {
     }
     public static String getCityName(Context context){
         return context.getSharedPreferences(FILE_NAME, Context.MODE_PRIVATE)
-                .getString("cityName","选择城市");
+                .getString("cityName","choose city");
     }
 }

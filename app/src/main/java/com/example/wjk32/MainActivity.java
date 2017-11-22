@@ -40,8 +40,6 @@ public class MainActivity extends FragmentActivity implements OnCheckedChangeLis
     @ViewInject(R.id.main_home)
     private RadioButton main_home;
     private FragmentManager fragmentManager;
-    @ViewInject(R.id.button)
-    private Button button;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,19 +57,6 @@ public class MainActivity extends FragmentActivity implements OnCheckedChangeLis
         changeFragment(new FragmentHome(),false);
 
 
-    }
-    @Event(value=R.id.button,type = View.OnClickListener.class)
-    private void Onclick(View view){
-        HttpClient client=new DefaultHttpClient();
-        HttpGet httpGet=new HttpGet(Consts.CITY_DATA_URI);
-
-        try {
-            Log.i("TAG","before");
-            HttpResponse response=client.execute(httpGet);
-            Log.i("TAG","gua");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
     @Override
     public void onCheckedChanged(RadioGroup radioGroup, int i) {

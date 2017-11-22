@@ -30,17 +30,26 @@
             android:background="@mipmap/map_refresh" />
     </RelativeLayout>
 
-    <ListView
-        android:id="@+id/city_list"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/index" />
-    <!--<com.uniquefrog.dianping.view.CitySideIndexView-->
-        <!--android:id="@+id/citySideIndexView"-->
-        <!--android:layout_width="45dp"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_alignParentRight="true"-->
-        <!--android:layout_below="@id/rlCityBar"-->
-        <!--/>-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/index">
+            <ListView
+                android:id="@+id/city_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:cacheColorHint="@color/normal_bg_color"
+                android:scrollbars="none"
+                android:layout_margin="@dimen/little_space">
+            </ListView>
+
+        <com.example.wjk32.view.SiderBar
+            android:id="@+id/city_sider_bar"
+            android:layout_width="@dimen/normal_input_height"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true" />
+
+
+    </RelativeLayout>
 
 </RelativeLayout>
