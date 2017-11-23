@@ -1,6 +1,8 @@
 package com.example.wjk32.Fragment;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.text.SpannableString;
@@ -22,6 +24,8 @@ import com.example.wjk32.entity.Goods;
 import com.example.wjk32.entity.ResponseObject;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.handmark.pulltorefresh.library.PullToRefreshBase;
+import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.squareup.picasso.Picasso;
 
 import org.xutils.common.Callback;
@@ -40,7 +44,7 @@ import static com.example.wjk32.consts.CONSTS.*;
 public class FragmentGroupBuy extends Fragment {
 
     @ViewInject(R.id.index_listGoods)
-    private ListView listGoods;
+    private PullToRefreshListView listGoods;
 
     @Nullable
     @Override
@@ -48,16 +52,42 @@ public class FragmentGroupBuy extends Fragment {
         View view= inflater.inflate(R.layout.home_index_1,null);
         x.view().inject(this, view);
         x.Ext.init(getActivity().getApplication());
-        loadDatas(true);
+
+
+        listGoods.setMode(PullToRefreshBase.Mode.BOTH);
+        listGoods.setScrollingWhileRefreshingEnabled(true);
+        Log.i("TAG","gua");
+        listGoods.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ListView>() {
+
+            @Override
+            public void onRefresh(PullToRefreshBase<ListView> refreshView) {
+                loadDatas(listGoods.getScrollY()<0);
+
+            }
+        });
+
+        new Handler(new  Handler.Callback() {
+
+            @Override
+            public boolean handleMessage(Message arg0) {
+                listGoods.setRefreshing();
+                return true;
+            }
+        }).sendEmptyMessageDelayed(0, 300);
         return view;
     }
 
-    private int page=0, size = 10, count;// 初始化数据
+    private int page, size = 5, count;
     private MyAdapter adapter;
     private List<Goods> listDatas;
 
-    // 加载数据
+
     public void loadDatas(final boolean reflush) {
+        if (reflush) {
+            page = 0;
+        }else{
+            page++;
+        }
         RequestParams params = new RequestParams(Goods_Datas_URL);
         params.addQueryStringParameter("page", page + "");
         params.addQueryStringParameter("size", size + "");
@@ -66,6 +96,7 @@ public class FragmentGroupBuy extends Fragment {
         x.http().post(params, new Callback.CommonCallback<String>() {
             @Override
             public void onSuccess(String result) {
+                listGoods.onRefreshComplete();
                 Gson gson = new Gson();
                 ResponseObject<List<Goods>> object = gson.fromJson(
                         result,
@@ -74,15 +105,27 @@ public class FragmentGroupBuy extends Fragment {
                 page = object.getPage();
                 size = object.getSize();
                 count = object.getCount();
-                Log.i("TAG","size="+size);
-                listDatas = object.getDatas();
-                adapter = new MyAdapter();
-                listGoods.setAdapter(adapter);
-
+                if (reflush) {
+                    if(object.getSize()!=0) {
+                        listDatas = object.getDatas();
+                        adapter = new MyAdapter();
+                        listGoods.setAdapter(adapter);
+                    }
+                }else{
+                    if(object.getSize()==0){
+                        listGoods.setMode(PullToRefreshBase.Mode.BOTH.PULL_FROM_START);
+                        Toast.makeText(getActivity(),"no more products",Toast.LENGTH_SHORT).show();
+                    }
+                    else{
+                        listDatas.addAll(object.getDatas());
+                        adapter.notifyDataSetChanged();
+                    }
+                }
             }
 
             @Override
             public void onError(Throwable ex, boolean isOnCallback) {
+                listGoods.onRefreshComplete();
                 Toast.makeText(getActivity(), ex.getMessage(), Toast.LENGTH_SHORT)
                         .show();
             }

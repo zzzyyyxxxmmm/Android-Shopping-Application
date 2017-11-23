@@ -36,6 +36,7 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:26.1.0'
     compile 'com.android.support:design:26.1.0'
     implementation project(':xutils')
+    implementation project(':PullToRefreshlibrary')
     implementation files('libs/gson-2.2.4.jar')
     implementation files('libs/commons-logging-1.2.jar')
     implementation files('libs/commons-logging-1.2-javadoc.jar')

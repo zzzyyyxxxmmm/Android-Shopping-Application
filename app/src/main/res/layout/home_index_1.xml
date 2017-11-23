@@ -23,7 +23,7 @@
         />
     </LinearLayout>
 
-    <ListView
+    <com.handmark.pulltorefresh.library.PullToRefreshListView
         android:id="@+id/index_listGoods"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -31,6 +31,6 @@
         android:scrollbars="none"
         >
 
-    </ListView>
+    </com.handmark.pulltorefresh.library.PullToRefreshListView>
 
 </LinearLayout>
