@@ -95,7 +95,6 @@ public class FragmentHome extends Fragment implements LocationListener {
 
         @Override
         public View getView(int i, View view, ViewGroup viewGroup) {
-            Log.i("TAG","gugaug");
             MyHolder myHolder = null;
             if (view==null) {
                 myHolder = new MyHolder();

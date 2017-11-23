@@ -60,7 +60,6 @@ public class AllCategoryActivity extends Activity {
                 category = object.getDatas();
                 for(Category categoryitem:category){
                     int position = Integer.parseInt(categoryitem.getCategoryId());
-                    Log.i("TAG",position+" "+categoryitem.getCategoryNumber());
                     MyUtils.allCategoryNumber[position-1] = categoryitem.getCategoryNumber();
                 }
 

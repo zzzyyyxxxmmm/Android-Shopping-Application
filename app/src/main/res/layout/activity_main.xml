@@ -43,7 +43,7 @@
             android:scaleY="0.9"
             android:drawableTop="@drawable/main_tuan_selector"
             android:gravity="center"
-            android:text="main1"/>
+            android:text="Group"/>
         <RadioButton
             android:id="@+id/main_home2"
             android:layout_width="wrap_content"

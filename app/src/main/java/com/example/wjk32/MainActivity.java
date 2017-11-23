@@ -1,37 +1,18 @@
 package com.example.wjk32;
 
 import com.example.wjk32.Fragment.*;
-import com.example.wjk32.R;
-import com.example.wjk32.consts.*;
 
-import android.app.Application;
 import android.support.v4.app.FragmentTransaction;
-import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.ViewUtils;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Toast;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.xutils.view.annotation.ContentView;
-import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 import android.widget.RadioGroup.OnCheckedChangeListener;
-
-import java.io.IOException;
 
 
 public class MainActivity extends FragmentActivity implements OnCheckedChangeListener {
@@ -65,7 +46,7 @@ public class MainActivity extends FragmentActivity implements OnCheckedChangeLis
                 changeFragment(new FragmentHome(),true);
                 break;
             case R.id.main_home1:
-                changeFragment(new FragmentHome1(),true);
+                changeFragment(new FragmentGroupBuy(),true);
                 break;
             case R.id.main_home2:
                 changeFragment(new FragmentHome2(),true);
