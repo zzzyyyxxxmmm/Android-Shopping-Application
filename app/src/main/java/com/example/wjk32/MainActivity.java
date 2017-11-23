@@ -2,7 +2,7 @@ package com.example.wjk32;
 
 import com.example.wjk32.Fragment.*;
 import com.example.wjk32.R;
-import com.example.wjk32.consts.Consts;
+import com.example.wjk32.consts.*;
 
 import android.app.Application;
 import android.support.v4.app.FragmentTransaction;

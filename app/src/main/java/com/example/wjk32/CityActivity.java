@@ -24,7 +24,7 @@ import com.example.wjk32.R;
 import com.example.wjk32.view.SiderBar;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.example.wjk32.consts.Consts;
+import com.example.wjk32.consts.*;
 import com.example.wjk32.entity.City;
 import com.example.wjk32.entity.ResponseObject;
 
@@ -104,7 +104,7 @@ public class CityActivity extends Activity implements SiderBar.OnTouchingLetterC
         protected List<City> doInBackground(Void... params) {
 
             HttpClient client = new DefaultHttpClient();
-            HttpGet httpGet = new HttpGet(Consts.CITY_DATA_URI);
+            HttpGet httpGet = new HttpGet(CONSTS.CITY_DATA_URI);
             try {
                 HttpResponse response = client.execute(httpGet);
                 if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
@@ -135,9 +135,7 @@ public class CityActivity extends Activity implements SiderBar.OnTouchingLetterC
             listDatas.setAdapter(adapter);
         }
 
-        //解析Json格式的字符串
         private List<City> ParseJsonResult(String jsonResult) {
-            //利用Gson解析Json字符串数据
             Gson gson = new Gson();
             ResponseObject<List<City>> responseObject = gson.fromJson(jsonResult,
                     new TypeToken<ResponseObject<List<City>>>() {
@@ -193,13 +191,11 @@ public class CityActivity extends Activity implements SiderBar.OnTouchingLetterC
                     firstList.add(cityName);
 
                 }
-                //如果是已经被添加到列表中的城市，说明是第一次首字母添加进去，则tvCitySortKey应该可见
                 if (firstList.contains(cityName)) {
                     holder.keySort.setText(sortKey);
                     holder.keySort.setVisibility(View.VISIBLE);
 
                 }
-                //列表中不存在该城市的名字，说明首字母不是第一次出现，则tvCitySortKey不可见
                 else{
 
                     holder.keySort.setVisibility(View.GONE);

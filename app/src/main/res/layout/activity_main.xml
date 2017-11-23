@@ -29,7 +29,7 @@
             android:scaleY="0.9"
             android:drawableTop="@drawable/main_home_selector"
             android:gravity="center"
-            android:text="main"/>
+            android:text="Home"/>
 
         <RadioButton
             android:id="@+id/main_home1"

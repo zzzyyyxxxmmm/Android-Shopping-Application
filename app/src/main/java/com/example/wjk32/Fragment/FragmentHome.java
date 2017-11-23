@@ -1,5 +1,6 @@
 package com.example.wjk32.Fragment;
 
+import com.example.wjk32.AllCategoryActivity;
 import com.example.wjk32.CityActivity;
 import com.example.wjk32.myutils.MyUtils;
 import com.example.wjk32.utils.*;
@@ -27,6 +28,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -52,8 +56,10 @@ public class FragmentHome extends Fragment implements LocationListener {
     private String CityName;
     private LocationManager locationManager;
 
+    @ViewInject(R.id.home_nav_sort)
+    private GridView navSort;
 
-    @Nullable
+
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.homeindex, null);
@@ -65,7 +71,59 @@ public class FragmentHome extends Fragment implements LocationListener {
                 startActivityForResult(new Intent(getActivity(),CityActivity.class), MyUtils.REQUEST_CODE);
             }
         });
+        navSort.setAdapter(new NavAdapter());
         return view;
+    }
+    public class NavAdapter extends BaseAdapter {
+        @Override
+        public int getCount() {
+            // TODO Auto-generated method stub
+            return MyUtils.navsSort.length;
+        }
+
+        @Override
+        public Object getItem(int position) {
+            // TODO Auto-generated method stub
+            return null;
+        }
+
+        @Override
+        public long getItemId(int position) {
+            // TODO Auto-generated method stub
+            return 0;
+        }
+
+        @Override
+        public View getView(int i, View view, ViewGroup viewGroup) {
+            Log.i("TAG","gugaug");
+            MyHolder myHolder = null;
+            if (view==null) {
+                myHolder = new MyHolder();
+                view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.home_index_nav_item, null);
+                x.view().inject(myHolder, view);
+                view.setTag(myHolder);
+            }else{
+                myHolder = (MyHolder) view.getTag();
+            }
+            myHolder.textView.setText(MyUtils.navsSort[i]);
+            myHolder.imageView.setImageResource(MyUtils.navsSortImages[i]);
+            if (i == MyUtils.navsSort.length-1) {
+                myHolder.imageView.setOnClickListener(new View.OnClickListener() {
+
+                    @Override
+                    public void onClick(View v) {
+                        startActivity(new Intent(getActivity(), AllCategoryActivity.class));
+                    }
+                });
+            }
+            return view;
+        }
+    }
+    public class MyHolder{
+        @ViewInject(R.id.home_nav_item_desc)
+        public TextView textView;
+        @ViewInject(R.id.home_nav_item_image)
+        public ImageView imageView;
     }
 
 //    @Event(value=R.id.index_top_city,type = View.OnClickListener.class)
