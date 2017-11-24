@@ -1,5 +1,6 @@
 package com.example.wjk32.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -12,12 +13,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.wjk32.GoodsDetailActivity;
 import com.example.wjk32.R;
 import com.example.wjk32.consts.CONSTS;
 import com.example.wjk32.entity.Goods;
@@ -30,6 +33,7 @@ import com.squareup.picasso.Picasso;
 
 import org.xutils.common.Callback;
 import org.xutils.http.RequestParams;
+import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
@@ -45,7 +49,13 @@ public class FragmentGroupBuy extends Fragment {
 
     @ViewInject(R.id.index_listGoods)
     private PullToRefreshListView listGoods;
-
+    @Event(value = R.id.index_listGoods,type = ListView.OnItemClickListener.class)
+    private void onItemClick(AdapterView<?> parent, View view,
+                             int position, long id) {
+        Intent intent = new Intent(getActivity(), GoodsDetailActivity.class);
+        intent.putExtra("goods", listDatas.get(position-1));
+        startActivity(intent);
+    }
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
