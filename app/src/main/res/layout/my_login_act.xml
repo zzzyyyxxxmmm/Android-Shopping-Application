@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/normal_bg_color">
+
+    <LinearLayout
+        android:id="@+id/login_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/login_back"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_vertical"
+                android:contentDescription="@null"
+                android:padding="@dimen/normal_space"
+                android:src="@drawable/ic_back_u" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:padding="@dimen/normal_space"
+                android:text="Login"
+                android:textSize="@dimen/title_text_size" />
+
+            <TextView
+                android:id="@+id/login_register"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/my_textview_bg_color"
+                android:gravity="center_horizontal"
+                android:padding="@dimen/normal_space"
+                android:text="Sign Up"
+                android:textColor="@color/normal_orange_color" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="@dimen/normal_space"
+            android:background="@color/normal_orange_color" />
+
+        <EditText
+            android:id="@+id/login_uname"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/normal_input_height"
+            android:layout_marginLeft="@dimen/normal_space"
+            android:background="@drawable/mini_block_item_normal"
+            android:drawableLeft="@drawable/login_user"
+            android:drawablePadding="@dimen/normal_space"
+            android:hint="Email/Phone/Name"
+            android:inputType="text"
+            android:singleLine="true" />
+
+        <EditText
+            android:id="@+id/login_pass"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/normal_input_height"
+            android:layout_marginLeft="@dimen/normal_space"
+            android:background="@drawable/mini_block_item_normal"
+            android:drawableLeft="@drawable/login_password"
+            android:drawablePadding="@dimen/normal_space"
+            android:hint="password"
+            android:inputType="text"
+            android:singleLine="true" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/mini_block_item_normal"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/login_check_num"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/normal_input_height"
+                android:layout_marginLeft="@dimen/normal_space"
+                android:layout_weight="2"
+                android:background="@drawable/mini_block_item_normal"
+                android:drawableLeft="@drawable/login_check_num"
+                android:drawablePadding="@dimen/normal_space"
+                android:hint="Verification code"
+                android:inputType="text"
+                android:singleLine="true" />
+
+            <TextView
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/normal_bg_color" />
+
+            <Button
+                android:id="@+id/login_check_pass"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@null"
+                android:gravity="center"
+                android:textColor="@color/normal_orange_color"
+                android:textSize="@dimen/title_text_size" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/login_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/login_layout"
+        android:layout_margin="@dimen/normal_space"
+        android:background="@drawable/my_btn_bg_color"
+        android:padding="@dimen/little_space"
+        android:text="Sign In"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_default" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/speical">
+
+        <TextView
+
+            android:id="@+id/login_by_weixin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/big_space"
+            android:drawableLeft="@drawable/weixin_btn"
+            android:drawablePadding="@dimen/little_space"
+            android:gravity="center_vertical"
+            android:paddingLeft="35dp"
+            android:paddingTop="@dimen/big_space"
+            android:text="WECHAT"
+            android:scaleY="0.7"
+            android:scaleX="0.7"
+            android:textSize="@dimen/text_size_default" />
+
+        <TextView
+            android:id="@+id/login_by_qq"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/big_space"
+            android:layout_toRightOf="@id/login_by_weixin"
+            android:drawableLeft="@drawable/qq_btn"
+            android:drawablePadding="@dimen/little_space"
+            android:gravity="center_vertical"
+            android:paddingLeft="55dp"
+            android:scaleY="0.7"
+            android:scaleX="0.7"
+            android:paddingTop="@dimen/big_space"
+            android:text="QQ"
+            android:textSize="@dimen/text_size_default" />
+
+    </LinearLayout>
+</RelativeLayout>

@@ -9,6 +9,7 @@ import com.example.wjk32.R;
 
 
 public class MyUtils {
+    public static final int RequestLoginCode = 1;
     public static final int REQUEST_CODE=2;
     public static final int REQUEST_CITY_CODE = 2;
     //result code

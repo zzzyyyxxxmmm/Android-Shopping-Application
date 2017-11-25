@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/normal_bg_color">
+
+    <LinearLayout
+        android:id="@+id/register_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/register_back"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_vertical"
+                android:contentDescription="@null"
+                android:padding="@dimen/normal_space"
+                android:src="@drawable/ic_back_u" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:padding="@dimen/normal_space"
+                android:text="注册"
+                android:textSize="@dimen/title_text_size" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="@dimen/normal_space"
+            android:background="@color/normal_orange_color" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/my_register_phone"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/normal_input_height"
+                android:layout_marginLeft="@dimen/normal_space"
+                android:layout_weight="1"
+                android:background="@null"
+                android:drawableLeft="@drawable/my_register_phone"
+                android:drawablePadding="@dimen/normal_space"
+                android:hint="输入手机号"
+                android:inputType="phone"
+                android:singleLine="true" />
+
+            <Button
+                android:id="@+id/register_get_check_pass"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@drawable/my_register_getcheck_pass"
+                android:text="获取验证码"
+                android:textColor="@color/gray"
+                android:layout_gravity="center_vertical"/>
+
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/my_register_get_check_pass"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/normal_input_height"
+            android:layout_marginLeft="@dimen/normal_space"
+            android:background="@drawable/mini_block_item_normal"
+            android:drawableLeft="@drawable/my_register_get_check_pass"
+            android:drawablePadding="@dimen/normal_space"
+            android:hint="输入验证码"
+            android:inputType="text"
+            android:singleLine="true" />
+
+        <EditText
+            android:id="@+id/my_register_get_pass"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/normal_input_height"
+            android:layout_marginLeft="@dimen/normal_space"
+            android:background="@drawable/mini_block_item_normal"
+            android:drawableLeft="@drawable/my_register_get_pass"
+            android:drawablePadding="@dimen/normal_space"
+            android:hint="需组合数字、字母或符号"
+            android:inputType="textPassword"
+            android:singleLine="true" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/register_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/mini_orange_bg"
+        android:layout_below="@id/register_layout"
+        android:textSize="@dimen/text_size_default"
+        android:textColor="@color/gray"
+        android:text="注册"
+        android:padding="@dimen/normal_space"
+        />
+
+    <CheckBox
+        android:id="@+id/register_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/register_btn"
+        android:layout_alignLeft="@id/register_btn"
+        android:checked="true"
+        android:textSize="14sp"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="我已看过并同意大众点评网《用户使用协议》"
+        android:layout_below="@id/register_btn"
+        android:layout_alignTop="@id/register_info"
+        android:layout_alignBottom="@id/register_info"
+        android:layout_toRightOf="@id/register_info"
+        android:paddingLeft="@dimen/normal_space"
+        android:gravity="center_vertical"
+        android:singleLine="true"/>
+</RelativeLayout>

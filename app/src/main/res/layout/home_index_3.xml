@@ -1,19 +1,193 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    >
+    android:background="@color/normal_bg_color">
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="index3"
-        android:padding="@dimen/normal_space"
-        android:textSize="@dimen/title_text_size"
-        android:background="@color/white"
-        android:gravity="center_horizontal"
-        />
+        android:orientation="vertical">
 
-</LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/normal_orange_color"
+            android:gravity="center_horizontal"
+            android:padding="@dimen/normal_space"
+            android:text="Mine"
+            android:textSize="@dimen/title_text_size" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="1dp"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:padding="@dimen/normal_space">
+
+            <ImageView
+                android:id="@+id/my_index_login_image"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:contentDescription="@null"
+                android:scaleType="centerInside"
+                android:src="@drawable/protrait_def" />
+
+            <TextView
+                android:id="@+id/my_index_login_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/my_index_login_image"
+                android:drawableRight="@drawable/arrow_normal"
+                android:paddingLeft="@dimen/little_space"
+                android:text="Login"
+                android:textSize="@dimen/text_size_default" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:padding="@dimen/normal_space">
+
+            <TextView
+                android:id="@+id/my_index_nav_dianping"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawablePadding="@dimen/normal_space"
+                android:drawableTop="@drawable/my_dianping_user_icon_normal"
+                android:gravity="center"
+                android:text="My Comment" />
+
+            <TextView
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/gray" />
+
+            <TextView
+                android:id="@+id/my_index_nav_collect"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawablePadding="@dimen/normal_space"
+                android:drawableTop="@drawable/my_collect_user_icon_normal"
+                android:gravity="center"
+                android:text="My Favorite" />
+
+            <TextView
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/gray" />
+
+            <TextView
+                android:id="@+id/my_index_nav_coupon"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawablePadding="@dimen/normal_space"
+                android:drawableTop="@drawable/my_coupon_user_icon_normal"
+                android:gravity="center"
+                android:text="My Buffet" />
+
+            <TextView
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/gray" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/my_index_item_order"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/normal_space"
+            android:background="@color/white"
+            android:drawableLeft="@drawable/my_order_user_icon_normal"
+            android:drawableRight="@drawable/arrow_normal"
+            android:gravity="center_vertical"
+            android:padding="@dimen/normal_space"
+            android:text="My Commnent"
+            android:textSize="@dimen/text_size_default"
+            android:drawablePadding="@dimen/normal_space"
+            />
+
+        <TextView
+            android:id="@+id/my_index_item_wallet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:drawableLeft="@drawable/my_wallet_user_icon_normal"
+            android:drawableRight="@drawable/arrow_normal"
+            android:gravity="center_vertical"
+            android:padding="@dimen/normal_space"
+            android:text="Wallet"
+            android:textSize="@dimen/text_size_default"
+            android:drawablePadding="@dimen/normal_space"
+            />
+
+        <TextView
+            android:id="@+id/my_index_item_review"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/normal_space"
+            android:background="@color/white"
+            android:drawableLeft="@drawable/my_review_user_icon_normal"
+            android:drawableRight="@drawable/arrow_normal"
+            android:gravity="center_vertical"
+            android:padding="@dimen/normal_space"
+            android:text="In Comment"
+            android:textSize="@dimen/text_size_default"
+            android:drawablePadding="@dimen/normal_space"
+            />
+
+        <TextView
+            android:id="@+id/my_index_item_day_recommand"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:drawableLeft="@drawable/my_day_recommand_user_icon_normal"
+            android:drawableRight="@drawable/arrow_normal"
+            android:gravity="center_vertical"
+            android:padding="@dimen/normal_space"
+            android:text="Recommend"
+            android:textSize="@dimen/text_size_default"
+            android:drawablePadding="@dimen/normal_space"
+            />
+
+        <TextView
+            android:id="@+id/my_index_item_history"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:drawableLeft="@drawable/my_history_user_icon_normal"
+            android:drawableRight="@drawable/arrow_normal"
+            android:gravity="center_vertical"
+            android:padding="@dimen/normal_space"
+            android:text="History"
+            android:textSize="@dimen/text_size_default"
+            android:drawablePadding="@dimen/normal_space"
+            />
+
+        <TextView
+            android:id="@+id/my_index_item_setting"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:drawableLeft="@drawable/my_setting_user_icon_normal"
+            android:drawableRight="@drawable/arrow_normal"
+            android:gravity="center_vertical"
+            android:padding="@dimen/normal_space"
+            android:layout_marginTop="@dimen/normal_space"
+            android:text="Settings"
+            android:textSize="@dimen/text_size_default"
+            android:drawablePadding="@dimen/normal_space"
+            />
+
+    </LinearLayout>
+
+</ScrollView>

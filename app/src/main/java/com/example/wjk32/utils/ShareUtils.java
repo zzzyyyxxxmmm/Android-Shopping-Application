@@ -5,32 +5,57 @@ package com.example.wjk32.utils;
  */
 
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences.Editor;
 
-/**
- * Created by Administrator on 2015/6/28.
- */
 public class ShareUtils {
-    private static final String FILE_NAME = "dianping";
-    private static final String MODE_NAME = "welcome";
+
+    private static final String FIIL_NAME = "byhands";
+    private static final String NODE_NAME = "welcome";
+    private static final String USER_NAME = "username";
+
+    // 获取boolean类型的值
     public static boolean getWelcomeBoolean(Context context){
-        return context.getSharedPreferences(FILE_NAME, Context.MODE_PRIVATE).getBoolean(MODE_NAME,false);
+
+        return context.getSharedPreferences(FIIL_NAME ,Context.MODE_PRIVATE).getBoolean(NODE_NAME, false);
     }
-    public static void putWelcomeBoolean(Context context, boolean isFirst){
-        Editor editor = context.getSharedPreferences(FILE_NAME, Context.MODE_PRIVATE).edit();
-        editor.putBoolean(MODE_NAME, isFirst);
+
+    // 写入Boolean类型的值
+    public static void putWelcomeBoolean(Context context ,boolean isFirst){
+
+        @SuppressLint("WrongConstant") Editor editor = context.getSharedPreferences(FIIL_NAME, Context.MODE_APPEND).edit();
+        editor.putBoolean(NODE_NAME, isFirst);
         editor.commit();
     }
-    //getSharedPreferences is used to save some common infos of users
-    public static void putCityName(Context context, String cityName){
-        Editor editor = context.getSharedPreferences(FILE_NAME,
-                Context.MODE_WORLD_READABLE).edit();
+
+    // 写入一个String类型的数据
+    public static void putCityName(Context context ,String cityName){
+
+        @SuppressLint("WrongConstant") Editor editor = context.getSharedPreferences(FIIL_NAME, Context.MODE_APPEND).edit();
         editor.putString("cityName", cityName);
         editor.commit();
     }
+
+    // 获取String类型的值
     public static String getCityName(Context context){
-        return context.getSharedPreferences(FILE_NAME, Context.MODE_PRIVATE)
-                .getString("cityName","choose city");
+
+        return context.getSharedPreferences(FIIL_NAME ,Context.MODE_PRIVATE).getString("cityName", "选择城市");
     }
+
+    // 写入一个登录用户名
+    public static void putUserName(Context context ,String cityName){
+
+        @SuppressLint("WrongConstant") Editor editor = context.getSharedPreferences(USER_NAME, Context.MODE_APPEND).edit();
+        editor.putString("userName", cityName);
+        editor.commit();
+    }
+
+    // 获取登录用户名
+    public static String getUserName(Context context){
+
+        return context.getSharedPreferences(USER_NAME ,Context.MODE_PRIVATE).getString("userName", "用户登录");
+    }
+
+
 }
