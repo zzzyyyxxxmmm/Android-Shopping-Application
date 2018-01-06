@@ -1,3 +1,3 @@
-include ':app', ':sample', ':xutils'
+include ':app', ':xutils'
 
 include ':PullToRefreshlibrary'

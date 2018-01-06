@@ -6,6 +6,7 @@ package com.example.wjk32;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,6 +33,10 @@ import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
+
+
+import static android.content.ContentValues.TAG;
 
 @ContentView(R.layout.home_index_nav_all)
 public class AllCategoryActivity extends Activity {
