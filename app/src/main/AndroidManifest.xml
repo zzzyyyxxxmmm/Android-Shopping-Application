@@ -63,11 +63,6 @@
         <meta-data android:name="Mob-AppKey" android:value="229e05a4dae5e"/>
         <meta-data android:name="Mob-AppSecret" android:value="588c56bf4d8e7dba5c73936d2e939cad"/>
         <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <activity android:name=".CityActivity"/>
@@ -76,6 +71,17 @@
         <activity android:name=".NearbyMapActivity"/>
         <activity android:name=".MyLoginActivity"/>
         <activity android:name=".MyRegisterActivity"/>
+        <activity android:name=".WelcomeActivity">
+
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+
+        </activity>
+        <activity android:name=".WelcomeGuide"/>
+
     </application>
 
 </manifest>

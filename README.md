@@ -37,3 +37,6 @@ It has four pages: Home, Group Buying, Find, Mine
 
 ![Home](https://github.com/zzzyyyxxxmmm/Android_test_01/blob/master/Saved%20Pictures/12.png)![Home](https://github.com/zzzyyyxxxmmm/Android_test_01/blob/master/Saved%20Pictures/13.png)
 
+
+## Log
+2018-1-5 20:10:55: Implement splash screen and various onboarding screens
